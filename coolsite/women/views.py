@@ -2,11 +2,28 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
+from django.template.defaultfilters import slugify, upper
+
+menu = ['О сайте', 'Войти ', 'Обратная связь']
+
+
 def index(request):
-    print(request.GET)
-    return HttpResponse(f"Страница приложения women <br> ")
+    # t = render_to_string('women/index.html')
+    # return HttpResponse(t)
+    data = {'title': 'SFDSDF SDFSDF SDFSDF',
+            'menu': menu,
+            'float': 23.123,
+            'value': 1,
+            'url': upper("Очень крутой курсовик"),
+            'url1': slugify("Очень крутой курсовик"),
+            '12': 12,
+            }
+    # return render(request, 'women/index.html', context=data)
+    # return render(request, 'women/index.html', {'title': 'Главная страница'})
+    print(data)
+    print('sdf')
+    return render(request, 'women/index.html', data)
 
 
 def categories(request, cat_id):
