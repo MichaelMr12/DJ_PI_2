@@ -5,25 +5,42 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.template.defaultfilters import slugify, upper
 
-menu = ['О сайте', 'Войти ', 'Обратная связь']
+menu = [{'title': 'О сайте', 'url_name': 'about'},
+        {'title': 'Домашняя', 'url_name': 'home'},
+        {'title': 'Категории', 'url_name': 'cats'},
+        ]
+
+data_db = [{'id': 1, 'FIO': 'Снытко Руслан Николаевич', 'intresting': 'вязание, дизайн, верстка, вышивание крестиком',
+            'diplom_red': True},
+           {'id': 2, 'FIO': 'Король Богдан Александрович',
+            'intresting': 'парашутный спорт, бокс , страйкбол,спортивный туризм', 'diplom_red': True},
+           {'id': 3, 'FIO': 'Тузов Александр Максимович', 'intresting': 'курение, автомобили, спорт, компьютерные игры',
+            'diplom_red': False},
+
+           ]
 
 
 def index(request):
     # t = render_to_string('women/index.html')
     # return HttpResponse(t)
     data = {'title': 'SFDSDF SDFSDF SDFSDF',
-            'menu': menu,
             'float': 23.123,
             'value': 1,
             'url': upper("Очень крутой курсовик"),
             'url1': slugify("Очень крутой курсовик"),
             '12': 12,
+            'posts': data_db,
+            'menu':menu,
             }
     # return render(request, 'women/index.html', context=data)
     # return render(request, 'women/index.html', {'title': 'Главная страница'})
     print(data)
     print('sdf')
     return render(request, 'women/index.html', data)
+
+
+def about(request):
+    return render(request, 'women/about.html', context={'menu': menu})
 
 
 def categories(request, cat_id):

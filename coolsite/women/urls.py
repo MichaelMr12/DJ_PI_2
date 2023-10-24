@@ -8,6 +8,7 @@ register_converter(FourDigitYearConverter, "yyyy")
 urlpatterns = [
 
     path('', index, name='home'),
+    path('about/', about, name='about'),
     path('categor/', categ, name='cats'),
 
     path('cats/<int:cat_id>/', categories, name='num_id'),

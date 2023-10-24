@@ -5,6 +5,15 @@
     <title>{{title|capfirst}}</title>
 </head>
 <body>
+<ul>
+    {% for m in menu %}
+    <li>
+        <a href="{% url m.url_name %}"> {{m.title}}</a>
+    </li>
+    {% endfor %}
+</ul>
+<br>
+<hr>
 <h1>{{menu123}}</h1>
 <h1>{{title |slugify }}</h1>
 <p> {{float}}</p>
@@ -12,5 +21,22 @@
 <p>{{ url }} </p>
 <p>{{ 12 }} </p>
 <p>{{ url1 }} </p>
+<br>
+<a href="{% url 'about' %}"> О сайте</a>
+<br>
+
+<ul>
+    {% for p in posts %}
+    <li>
+        <h2>{{ p.FIO }} </h2>
+        <p> {{ p.intresting }} </p>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+
 </body>
 </html>
