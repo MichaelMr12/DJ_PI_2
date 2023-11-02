@@ -10,6 +10,7 @@ urlpatterns = [
     path('', index, name='home'),
     path('about/', about, name='about'),
     path('categor/', categ, name='cats'),
+    path('cub/', cub, name='cub'),
 
     path('cats/<int:cat_id>/', categories, name='num_id'),
     path('cats/<slug:cat>/', categories_slug, name='cat_slug'),

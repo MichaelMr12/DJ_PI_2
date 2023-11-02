@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title|capfirst}}</title>
-</head>
-<body>
-<ul>
-    {% for m in menu %}
-    <li>
-        <a href="{% url m.url_name %}"> {{m.title}}</a>
-    </li>
-    {% endfor %}
-</ul>
+{%  extends 'base.html' %}
+{% block content1 %}
 <br>
 <hr>
 <h1>{{menu123}}</h1>
@@ -24,7 +12,7 @@
 <br>
 <a href="{% url 'about' %}"> О сайте</a>
 <br>
-
+{% include 'women/includes/nav.html' only  %}
 <ul>
     {% for p in posts %}
     <li>
@@ -37,6 +25,7 @@
     {% endfor %}
 </ul>
 
+{% include 'women/includes/nav.html' %}
 
-</body>
-</html>
+
+{% endblock %}

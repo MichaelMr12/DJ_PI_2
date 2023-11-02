@@ -8,6 +8,7 @@ from django.template.defaultfilters import slugify, upper
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Домашняя', 'url_name': 'home'},
         {'title': 'Категории', 'url_name': 'cats'},
+        {'title': 'Красивый css', 'url_name': 'cub'},
         ]
 
 data_db = [{'id': 1, 'FIO': 'Снытко Руслан Николаевич', 'intresting': 'вязание, дизайн, верстка, вышивание крестиком',
@@ -23,7 +24,7 @@ data_db = [{'id': 1, 'FIO': 'Снытко Руслан Николаевич', 'i
 def index(request):
     # t = render_to_string('women/index.html')
     # return HttpResponse(t)
-    data = {'title': 'SFDSDF SDFSDF SDFSDF',
+    data = {'title': 'Главная',
             'float': 23.123,
             'value': 1,
             'url': upper("Очень крутой курсовик"),
@@ -31,6 +32,7 @@ def index(request):
             '12': 12,
             'posts': data_db,
             'menu':menu,
+
             }
     # return render(request, 'women/index.html', context=data)
     # return render(request, 'women/index.html', {'title': 'Главная страница'})
@@ -40,8 +42,12 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'women/about.html', context={'menu': menu})
 
+    return render(request, 'women/about.html', context={'menu': menu, 'title':'О программе'})
+
+def cub(request):
+
+    return render(request, 'women/3D_kub.html', context={'menu': menu, 'title':'Красивый css'})
 
 def categories(request, cat_id):
     return HttpResponse(f"<h1> статья под номером {cat_id} </h1>")

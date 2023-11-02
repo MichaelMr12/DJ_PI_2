@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<ul>
-    {% for m in menu %}
-    <li>
-        <a href="{% url m.url_name %}"> {{m.title}}</a>
-    </li>
-    {% endfor %}
-</ul>
-<br>
 
-<h1> О сайте </h1>
-</body>
-</html>
+{%  extends 'base.html' %}
+{% block content1 %}
+<h1> PI 201 </h1>
+
+{% include 'women/includes/nav.html' only with pi=3.14 %}
+{% endblock %}

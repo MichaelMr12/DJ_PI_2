@@ -21,7 +21,8 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-
+# python manage.py collectstatic собирает статические файлы перед выгрузкой на сервер
+# python manage.py runserver --insecure
 
 if __name__ == '__main__':
     main()
