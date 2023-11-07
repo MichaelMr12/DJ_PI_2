@@ -24,5 +24,12 @@ def main():
 # python manage.py collectstatic собирает статические файлы перед выгрузкой на сервер
 # python manage.py runserver --insecure
 
+''' DB
+python manage.py makemigrations     создание миграций
+
+python manage.py sqlmigrate women 0001  просмотор миграций на sql
+python manage.py migrate выполнение миграции
+'''
+
 if __name__ == '__main__':
     main()
