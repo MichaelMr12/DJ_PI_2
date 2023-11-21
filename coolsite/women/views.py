@@ -31,7 +31,7 @@ def index(request):
             'url1': slugify("Очень крутой курсовик"),
             '12': 12,
             'posts': data_db,
-            'menu':menu,
+            'menu': menu,
 
             }
     # return render(request, 'women/index.html', context=data)
@@ -41,13 +41,20 @@ def index(request):
     return render(request, 'women/index.html', data)
 
 
-def about(request):
+def students(request, student):
+    data = {'title': 'Профиль студента',
+            'menu': menu,
+            }
+    return render(request, 'women/students.html', data)
 
-    return render(request, 'women/about.html', context={'menu': menu, 'title':'О программе'})
+
+def about(request):
+    return render(request, 'women/about.html', context={'menu': menu, 'title': 'О программе'})
+
 
 def cub(request):
+    return render(request, 'women/3D_kub.html', context={'menu': menu, 'title': 'Красивый css'})
 
-    return render(request, 'women/3D_kub.html', context={'menu': menu, 'title':'Красивый css'})
 
 def categories(request, cat_id):
     return HttpResponse(f"<h1> статья под номером {cat_id} </h1>")
