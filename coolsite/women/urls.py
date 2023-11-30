@@ -11,7 +11,8 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('categor/', categ, name='cats'),
     path('cub/', cub, name='cub'),
-    path('students/<slug:student>/', students, name='student_slug'),
+    path('students/', students, name='students'),
+    path('students/<slug:student_slug>/', student, name='student'),
 
     path('cats/<int:cat_id>/', categories, name='num_id'),
     path('cats/<slug:cat>/', categories_slug, name='cat_slug'),

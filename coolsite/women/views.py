@@ -1,14 +1,17 @@
 # для хранения представлений текущего приложения
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from django.template.defaultfilters import slugify, upper
+
+from women.models import Students
 
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Домашняя', 'url_name': 'home'},
         {'title': 'Категории', 'url_name': 'cats'},
         {'title': 'Красивый css', 'url_name': 'cub'},
+        {'title': 'Список студентов', 'url_name': 'students'},
         ]
 
 data_db = [{'id': 1, 'FIO': 'Снытко Руслан Николаевич', 'intresting': 'вязание, дизайн, верстка, вышивание крестиком',
@@ -41,11 +44,22 @@ def index(request):
     return render(request, 'women/index.html', data)
 
 
-def students(request, student):
-    data = {'title': 'Профиль студента',
+def students(request):
+    posts = Students.objects.all()
+    data = {'title': 'Список студентов',
             'menu': menu,
+            'posts': posts,
             }
     return render(request, 'women/students.html', data)
+
+
+def student(request, student_slug):
+    post = get_object_or_404(Students, slug=student_slug)
+    data = {'title': 'Профиль студента',
+            'menu': menu,
+            'post': post,
+            }
+    return render(request, 'women/student.html', data)
 
 
 def about(request):
